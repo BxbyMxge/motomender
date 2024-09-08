@@ -1,0 +1,2 @@
+npm install next-auth
+npm i neo4j-driver
