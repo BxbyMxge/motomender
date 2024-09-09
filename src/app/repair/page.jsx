@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import neo4j from 'neo4j-driver'; // Import the Neo4j driver
-import neo4jDriver from "../components/neo4j";
 
 const Page = () => {
 
@@ -36,18 +35,14 @@ const Page = () => {
   // Handler for updating Neo4j database
   const handleUpdate = async () => {
     try {
-      // Set up your Neo4j driver instance (replace with your own credentials)
-      //const neo4jUri = process.env.NEO4J_URL; // Neo4j server URI
-      //const neo4jUser = process.env.NEO4J_USERNAME; // Neo4j username
-      //const neo4jPassword = process.env.NEO4J_PASSWORD; // Neo4j password
+
 
       const neo4jUri = process.env.NEXT_PUBLIC_URL; // Neo4j server URI
       const neo4jUser = process.env.NEXT_PUBLIC_U; // Neo4j username
       const neo4jPassword = process.env.NEXT_PUBLIC_P; // Neo4j password
 
       const driver = neo4j.driver(neo4jUri, neo4j.auth.basic(neo4jUser, neo4jPassword));
-      //const driver = neo4j.driver(NEO4J_URL, neo4j.auth.basic(NEO4J_USER, NEO4J_PWD));
-      //const driver = await neo4jDriver();
+
       const session = driver.session();
 
       console.log("neo4j uri : ", neo4jUri);
@@ -59,10 +54,10 @@ const Page = () => {
           '-[:_RELATED]->(p:Product {Name: $name, Lifespan: $lifespan, Cost: $cost, Category: $category});',
         {
           name: formData.name,
-          mileage: formData.mileage,
-          lifespan: formData.lifespan,
-          cost: formData.cost,
-          category: formData.category,
+    mileage: parseFloat(formData.mileage),
+    lifespan: parseFloat(formData.lifespan),
+    cost: parseFloat(formData.cost),
+    category: formData.category,
         }
       );
 
@@ -85,10 +80,10 @@ const Page = () => {
   };
 
   // Handler for form submission
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    handleUpdate();
-  };
+  //const handleSubmit = (event) => {
+    //event.preventDefault();
+    //handleUpdate();
+  //};
 
   // Handler for form input changes
   const handleInputChange = (event) => {
