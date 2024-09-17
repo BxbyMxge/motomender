@@ -1,2 +1,14 @@
 npm install next-auth
 npm i neo4j-driver
+npx nextui-cli@latest add autocomplete
+npm install @nextui-org/autocomplete
+npx nextui-cli@latest add button
+npx nextui-cli@latest add navbar
+npm install -g nextui-cli
+nextui add --all
+
+npm install @headlessui/react
+npm install primereact
+
+
+

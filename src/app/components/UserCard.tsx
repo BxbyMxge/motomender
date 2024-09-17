@@ -12,6 +12,7 @@ type Props = {
 }
 
 export default function Card({ user, pagetype }: Props) {
+    console.log('Rendering Card component with user:', user);
 
     //console.log(user)
 
@@ -38,11 +39,14 @@ export default function Card({ user, pagetype }: Props) {
         />
     ) : null
 
+
+
     return (
         <section className="flex flex-col gap-4">
             {greeting}
             {/* {emailDisplay} */}
             {userImage}
+
             <p className="text-2xl text-center">{pagetype} Page!</p>
         </section>
     )
