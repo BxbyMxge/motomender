@@ -27,6 +27,14 @@ const getYearsForMake = async (selectedMake) => {
   //return _years;
 };
 
+const getModelsForMakeAndYear = async (selectedMake, selectedYear) => {
+  // Replace this with your logic to fetch models for the selected make and year
+  // For now, let's assume you have an array of models like this:
+  //return ["Model A", "Model B", "Model C", /* ... */];
+    console.log("Selected Make : ",selectedMake, " Selected Year : ",selectedYear);
+  return await getMakeByBrandAndYear(selectedMake, selectedYear);
+};
+
 
 
 export default function App() {
@@ -75,16 +83,16 @@ export default function App() {
         console.log("[model_useEffect]selected year : ", selectedYear);
         // Fetch model for the selected make and year and update the state
         if (selectedMake && selectedYear) {
-            getMakeByBrandAndYear(selectedMake, selectedYear)
+            getModelsForMakeAndYear(selectedMake, selectedYear)
                 .then((models) => {
                     setModelList(models);
-                    console.log(modelList);
+                    console.log("updated modelList",modelList);
                 })
                 .catch((error) => {
-                    console.error("Error fetching years:", error);
+                    console.error("Error fetching model:", error);
                 });
         }
-    }, [selectedMake, selectedYear]);
+    }, [selectedMake, selectedYear, modelList]);
 
 
     const handleMakeSelectionChange = async (selectedMake) => {
