@@ -10,5 +10,8 @@ nextui add --all
 npm install @headlessui/react
 npm install primereact
 
+npm install @google/generative-ai
+
+
 
 

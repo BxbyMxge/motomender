@@ -274,3 +274,32 @@ export async function getMakeByBrandAndYear(brand: string, year: number) {
     await session.close();
   }
 }
+
+
+export async function getAllNodesFromUser(email: string) {
+  const session = driver.session();
+  try {
+    const result = await session.run(
+      `
+        MATCH (u:User {email: $email})-[r*1..2]-(relatedNode)
+RETURN u, r, relatedNode
+
+      `,
+      { email }
+    );
+    //return result;
+    //return result.records.map((record) => record.get('relatedNode'));
+
+    return result.records;
+
+
+
+  } finally {
+    await session.close();
+  }
+
+}
+
+
+//MATCH (u:User {email: 'fizice@gmail.com'})-[r*1..2]-(relatedNode)
+// RETURN u, r, relatedNode
